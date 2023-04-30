@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <h1>Database Objects</h1>
+
+</head>
+<body>
+CREATE DATABASE university;<br>
+<br>
+-- Creating schema for student<br>
+CREATE SCHEMA IF NOT EXISTS student;<br>
+-- Creating table for student<br>
+CREATE TABLE IF NOT EXISTS student (<br>
+student_id INT PRIMARY KEY,<br>
+first_name VARCHAR(50) NOT NULL,<br>
+last_name VARCHAR(50) NOT NULL,<br>
+email VARCHAR(100) NOT NULL,<br>
+phone VARCHAR(20),<br>
+department_id INT NOT NULL,<br>
+CONSTRAINT fk_department_id FOREIGN KEY (department_id) REFERENCES department (department_id)<br>
+);<br>
+-- Creating schema for lecturer<br>
+CREATE SCHEMA IF NOT EXISTS lecturer;<br>
+<br>
+-- Creating table for lecturer<br>
+CREATE TABLE IF NOT EXISTS lecturer (<br>
+lecturer_id INT PRIMARY KEY,<br>
+first_name VARCHAR(50) NOT NULL,<br>
+last_name VARCHAR(50) NOT NULL,<br>
+email VARCHAR(100) NOT NULL,<br>
+phone VARCHAR(20),<br>
+department_id INT NOT NULL,<br>
+CONSTRAINT fk_department_id FOREIGN KEY (department_id) REFERENCES department (department_id)<br>
+);<br>
+-- Creating schema for venue<br>
+CREATE SCHEMA IF NOT EXISTS venue;<br>
+<br>
+-- Creating table for venue<br>
+CREATE TABLE IF NOT EXISTS venue (<br>
+venue_id INT PRIMARY KEY,<br>
+name VARCHAR(50) NOT NULL,<br>
+capacity INT,<br>
+location POINT<br>
+);<br>
+-- Creating schema for department<br>
+CREATE SCHEMA IF NOT EXISTS department;<br>
+<br>
+-- Creating table for department<br>
+CREATE TABLE IF NOT EXISTS department (<br>
+department_id INT PRIMARY KEY,<br>
+name VARCHAR(50) NOT NULL,<br>
+faculty VARCHAR(50) NOT NULL<br>
+);
+</body>
+</html>
